@@ -18,7 +18,7 @@
 		<a href="#" onclick="closeDialog('#dialogArticle')" class="ui-dialog-titlebar-close ui-corner-all" role="button" unselectable="on" style="-moz-user-select: none; float: right;"><span class="ui-icon ui-icon-closethick" unselectable="on" style="-moz-user-select: none;">close</span></a>
 		</div>
 		<form id="formArticle">
-		<input type="hidden" name="article_id" id="article_id" />
+		<input type="hidden" name="tintuc_id" id="tintuc_id" />
 		<fieldset>
 			<legend><span style="font-weight:bold;">Thông Tin Tin Tức</span></legend>
 			<table class="center" width="80%">
@@ -32,33 +32,33 @@
 					<tr>
 						<td width="95px" align="left">Tiêu Đề :</td>
 						<td align="left">
-							<input type="text" name="article_title" id="article_title" style="width:95%" onblur="fillAlias()"/>
+							<input type="text" name="tintuc_title" id="tintuc_title" style="width:95%" onblur="fillAlias()"/>
 							<span style="color:red;font-weight:bold;cursor:pointer;" title="Bắt buộc nhập dữ liệu">*</span>
 						</td>										
 					</tr>
 					<tr>
 						<td align="left">URL Alias :</td>
 						<td align="left">
-							<input type="text" name="article_alias" id="article_alias" style="width:95%"/>
+							<input type="text" name="tintuc_alias" id="tintuc_alias" style="width:95%"/>
 						</td>										
 					</tr>
 					<tr>
 						<td align="left">Hình đại diện :</td>
 						<td align="left">
-							<input type="text" name="article_imagedes" id="article_imagedes" style="width:75%"/>
+							<input type="text" name="tintuc_imagedes" id="tintuc_imagedes" style="width:75%"/>
 							<a href="#" onclick="showImagesPanel()">Mở Gallery</a>
 						</td>										
 					</tr>
 					<tr>
 						<td  align="left">Tóm tắt :</td>
 						<td align="left">
-							<textarea name="article_contentdes" id="article_contentdes" rows="2" cols="59"></textarea>
+							<textarea name="tintuc_contentdes" id="tintuc_contentdes" rows="2" cols="59"></textarea>
 						</td>
 					</tr>					
 					<tr>
 						<td colspan="2" align="left">
 						Nội dung : <br/>
-						<textarea name="article_content" id="article_content" class="tinymce"></textarea>
+						<textarea name="tintuc_content" id="tintuc_content" class="tinymce"></textarea>
 						</td>
 					</tr>					
 					<tr>
@@ -117,8 +117,8 @@
 		}
 	}
 	function fillAlias() {
-		value = byId("article_title").value;
-		byId("article_alias").value = remove_space(remove_accents(value));
+		value = byId("tintuc_title").value;
+		byId("tintuc_alias").value = remove_space(remove_accents(value));
 	}
 	function showDialogArticle() {
 		doReset();
@@ -129,18 +129,18 @@
 		loadListArticles(page);
 	};
 	function fillFormValues(cells) { //Lấy giá trị từ row được chọn đưa lên form (click vào nút "Chọn")		
-		byId("article_id").value = $.trim($(cells.td_id).text());
-		byId("article_title").value = $.trim($(cells.td_title).text());		
-		byId("article_alias").value = $.trim($(cells.td_alias).text());		
-		byId("article_imagedes").value = $.trim($(cells.td_imagedes).text());		
-		byId("article_contentdes").value = $.trim($(cells.td_contentdes).text());		
+		byId("tintuc_id").value = $.trim($(cells.td_id).text());
+		byId("tintuc_title").value = $.trim($(cells.td_title).text());		
+		byId("tintuc_alias").value = $.trim($(cells.td_alias).text());		
+		byId("tintuc_imagedes").value = $.trim($(cells.td_imagedes).text());		
+		byId("tintuc_contentdes").value = $.trim($(cells.td_contentdes).text());		
 	}
 	function setRowValues(cells) { //Set giá trị từ form xuống row edit	
-		$(cells.td_id).text(byId("article_id").value);
-		$(cells.td_title).text(byId("article_title").value);			
-		$(cells.td_alias).text(byId("article_alias").value);			
-		$(cells.td_imagedes).text(byId("article_imagedes").value);			
-		$(cells.td_contentdes).text(byId("article_contentdes").value);			
+		$(cells.td_id).text(byId("tintuc_id").value);
+		$(cells.td_title).text(byId("tintuc_title").value);			
+		$(cells.td_alias).text(byId("tintuc_alias").value);			
+		$(cells.td_imagedes).text(byId("tintuc_imagedes").value);			
+		$(cells.td_contentdes).text(byId("tintuc_contentdes").value);			
 	}
 	function select_row(_this) {
 		//jsdebug(_this);
@@ -155,14 +155,14 @@
 		$.ajax({
 			type: "GET",
 			cache: false,
-			url : url("/article/getContentById/"+ $.trim($(cells.td_id).text())),
+			url : url("/tintuc/getContentById/"+ $.trim($(cells.td_id).text())),
 			success: function(data){
 				unblock("#dialogArticle #dialog");
 				if(data == AJAX_ERROR_NOTLOGIN) {
 					location.href = url("/admin/login");
 					return;
 				}
-				$('#article_content').html(data);		
+				$('#tintuc_content').html(data);		
 			},
 			error: function(data){ unblock("#dialogArticle #dialog");alert (data);}	
 		});
@@ -172,8 +172,8 @@
 		$("#formArticle")[0].reset(); //Reset form cua jquery, giu lai gia tri mac dinh cua cac field	
 		if(objediting)
 			objediting.style.backgroundColor = '';
-		byId("article_id").value="";
-		$('#article_content').html("");
+		byId("tintuc_id").value="";
+		$('#tintuc_content').html("");
 		$("#formArticle :input").css('border-color','');
 		byId("msg").innerHTML="";
 	}
@@ -182,7 +182,7 @@
 		$.ajax({
 			type : "GET",
 			cache: false,
-			url: url("/article/listArticles/"+page),
+			url: url("/tintuc/listArticles/"+page),
 			success : function(data){	
 				//alert(data);
 				unblock("#datagrid");
@@ -203,16 +203,16 @@
 	var isUpdate = false;
 	function saveArticle() {
 		checkValidate=true;
-		validate(['require'],'article_title',["Vui lòng nhập tiêu đề!"]);
+		validate(['require'],'tintuc_title',["Vui lòng nhập tiêu đề!"]);
 		if(checkValidate == false)
 			return;
 		isUpdate = false;
-		if(byId("article_id").value!="") {
+		if(byId("tintuc_id").value!="") {
 			if(!confirm("Bạn muốn cập nhật Tin Tức này?"))
 				return;
 			isUpdate = true;
 		}
-		if(byId("article_alias").value=="") {
+		if(byId("tintuc_alias").value=="") {
 			fillAlias();
 		}
 		dataString = $("#formArticle").serialize();
@@ -222,7 +222,7 @@
 		$.ajax({
 			type: "POST",
 			cache: false,
-			url : url("/article/saveArticle&"),
+			url : url("/tintuc/saveArticle&"),
 			data: dataString,
 			success: function(data){
 				unblock("#dialogArticle #dialog");
@@ -250,7 +250,7 @@
 		});
 	}
 	function deleteArticle() {
-		if(byId("article_id").value=="") {
+		if(byId("tintuc_id").value=="") {
 			alert("Vui lòng chọn tin cần xóa!");
 			return;
 		}
@@ -261,7 +261,7 @@
 		$.ajax({
 			type: "POST",
 			cache: false,
-			url : url("/article/deleteArticle&id="+byId("article_id").value),
+			url : url("/tintuc/deleteArticle&id="+byId("tintuc_id").value),
 			success: function(data){
 				unblock("#dialogArticle #dialog");	
 				if(data == AJAX_ERROR_NOTLOGIN) {
@@ -286,7 +286,7 @@
 		$.ajax({
 			type: "GET",
 			cache: false,
-			url : url("/article/activeArticle/"+$(cells.td_id).text()),
+			url : url("/tintuc/activeArticle/"+$(cells.td_id).text()),
 			success: function(data){
 				unblock("#content");
 				if(data == AJAX_ERROR_NOTLOGIN) {
@@ -309,7 +309,7 @@
 		$.ajax({
 			type: "GET",
 			cache: false,
-			url : url("/article/unActiveArticle/"+$(cells.td_id).text()),
+			url : url("/tintuc/unActiveArticle/"+$(cells.td_id).text()),
 			success: function(data){
 				unblock("#content");
 				if(data == AJAX_ERROR_NOTLOGIN) {
@@ -328,7 +328,7 @@
 	}
 	$(document).ready(function(){				
 		$("#title_page").text("Quản Trị Tin Tức");
-		$('#article_content').tinymce({
+		$('#tintuc_content').tinymce({
 			script_url : url_base+'/public/js/tiny_mce/tiny_mce.js',
 			theme : "advanced",
 			width : 300,
