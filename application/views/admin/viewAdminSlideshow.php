@@ -311,6 +311,7 @@
 		if(img[0]['id']!=null) {
 			$("#div_filedinhkem").hide();
 			idchosen = "chosen_"+img[0]['id'];
+			byId("slideshow_image").value = img[0]['id'];
 			$("#fileuploaded").html('<div style="display: block;" id="'+idchosen+'" ") class="chosen-container"><span class="chosen"><a href="'+img[0]['fileurl']+'" target="_blank">'+img[0]['filename']+'</a><img onclick="removechosen('+img[0]['id']+')" class="btn-remove-chosen" src="<?php echo BASE_PATH?>/public/img/icons/close_8x8.gif"/></span></div>');
 			$("#tbl_Slideshow").show();
 		}
