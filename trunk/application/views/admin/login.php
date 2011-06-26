@@ -17,54 +17,46 @@
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>ProAdmin - Login</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="<?php echo BASE_PATH ?>/public/css/backend/login.css" rel="stylesheet" type="text/css" />
+	<title>.: ĐĂNG NHẬP TRANG QUẢN TRỊ :.</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<!--[if IE]><link rel="stylesheet" href="../public/css/ie.css" type="text/css" media="screen, projection" /><![endif]-->
+    <link rel="stylesheet" type="text/css" media="all" href="../public/css/style.css" />
+	<link rel="Stylesheet" type="text/css" href="../public/css/smoothness/jquery-ui-1.7.1.custom.css"  />	
+	<!--[if IE]>
+		<style type="text/css">
+		  .clearfix {
+		    zoom: 1;     /* triggers hasLayout */
+		    display: block;     /* resets display for IE/Win */
+		    }  /* Only IE can see inside the conditional comment
+		    and read this CSS rule. Don't ever use a normal HTML
+		    comment inside the CC or it will close prematurely. */
+		</style>
+	<![endif]-->
+	<!-- JavaScript -->
+    <script type="text/javascript" src="../public/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../public/js/jquery-ui-1.7.1.custom.min.js"></script>
+	<script type="text/javascript" src="../public/js/custom.js"></script>
+	<!--[if IE]><script language="javascript" type="text/javascript" src="../public/js/excanvas.pack.js"></script><![endif]-->
 </head>
 <body>
-<div id="logo">
-	<img src="<?php echo BASE_PATH ?>/public/images/logo.png" alt="logopng" width="116" height="34" /> <!--//  Logo on upper corner -->
-</div>
-<div class="box">
-	<div class="welcome" id="welcometitle">Welcome to ProAdmin, Please Login: <!--//  Welcome message -->
-</div>
-  <div id="fields"> 
-	<form method="POST" action="<?php echo BASE_PATH ?>/account/doLogin">
-    <table width="333">
-		<tbody>
-			<tr>
-				<td colspan="2">
-					<?php
-					if(!empty($msg))
-					echo "<div class='negative'><span class='bodytext' style='padding-left:30px;'><strong>$msg</strong></span></div>";
-					?>
-				</td>
-			</tr>
-			<tr>
-				<td width="79" height="35"><span class="login">USERNAME</span></td>
-				<td width="244" height="35"><label>
-				  <input name="username" type="text" class="fields" id="username" size="30" value="<?php echo $username ?>"/>
-				</label></td>
-			</tr>
-			<tr>
-				<td height="35"><span class="login">PASSWORD</span></td>
-				<td height="35"><input name="password" type="password" class="fields" id="password" size="30" /></td>
-			</tr>
-			<tr>
-				<td height="65">&nbsp;</td>
-				<td height="65" valign="middle"><label>
-				  <input name="button" type="submit" class="button" id="button" value="LOGIN" />
-				</label></td>
-			</tr>
-		</tbody>
-    </table>
-	</form>
-  </div>
-  <div class="login" id="lostpassword"><a href="#">Lost Password?</a></div> <!--//  lost password part -->
-  <div class="copyright" id="copyright">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris risus mauris.<br />
-  <!--//  copyright / footer -->
-  Copyright &copy; Company People 2008.
-  <a href="index-2.html">Back to index.</a></div>
-</div>
+<div  id="login_container">
+    <div  id="header">
+		<div id="logo"><h1><a href="/">AdmintTheme</a></h1></div>
+    </div><!-- end header -->
+	    <div id="login" class="section">
+			<?php
+			if(!empty($msg))
+				echo "<div id='fail' class='info_div'><span class='ico_cancel'>$msg</span></div>";
+			?>
+	    	<form method="POST" action="<?php echo BASE_PATH ?>/account/doLogin">
+			<label><strong>Username</strong></label><input type="text" name="username" id="username"  size="28" class="input" value="<?php echo $username ?>"/>
+			<br />
+			<label><strong>Password</strong></label><input type="password" name="password" id="password"  size="28" class="input"/>
+			<br />
+			<input id="save" class="loginbutton" type="submit" class="submit" style="cursor:pointer" value="Đăng Nhập" />
+			</form>
+			<a href="#" id="passwordrecoverylink">Forgot your username or password?</a>
+	    </div>
+</div><!-- end container -->
 </body>
 </html>

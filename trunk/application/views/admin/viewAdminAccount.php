@@ -12,13 +12,12 @@
 </style>
 <div class="boxes" id="dialogAccount" >
 	<fieldset id="dialog" class="window">
-		<div class="ui-dialog-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="text-align: center; font-size: 13pt; padding: 2px;margin-bottom:3px;" ><span id="title_dialog">Tài Khoản Form</span>
+		<div class="ui-dialog-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="text-align: center; font-size: 13pt; padding: 2px;margin-bottom:3px;" ><span id="title_dialog">Thông Tin Người Dùng</span>
 		<a href="#" onclick="closeDialog('#dialogAccount')" class="ui-dialog-titlebar-close ui-corner-all" role="button" unselectable="on" style="-moz-user-select: none; float: right;"><span class="ui-icon ui-icon-closethick" unselectable="on" style="-moz-user-select: none;">close</span></a>
 		</div>
 		<form id="formAccount">
 		<input type="hidden" name="account_id" id="account_id" />
 		<fieldset>
-			<legend><span style="font-weight:bold;">Thông Tin Tài Khoản</span></legend>
 			<table class="center" width="100%">
 				<thead>
 					<tr>
@@ -34,17 +33,14 @@
 						</td>	
 						<td width="130px" align="right">Mật khẩu :</td>
 						<td align="left">
-							<input type="password" name="account_password" id="account_password" style="width:90%" tabindex="2"/><span style="color:red;font-weight:bold;cursor:pointer;" title="Bắt buộc nhập dữ liệu">*</span>
+							<input type="text" name="account_password" id="account_password" style="width:90%" tabindex="2"/><span style="color:red;font-weight:bold;cursor:pointer;" title="Bắt buộc nhập dữ liệu">*</span>
 						</td>
 						
 					</tr>
 					<tr>
-						<td align="right">Role :</td>
+						<td width="75px" align="right">Email :</td>
 						<td align="left">
-							<select name="account_role" id="account_role" tabindex="3">
-								<option value="1" selected>Quản trị hệ thống</option>
-								<option value="2">Người dùng</option>
-							</select>
+							<input type="text" name="account_email" id="account_email" style="width:90%"  tabindex="1"/><span style="color:red;font-weight:bold;cursor:pointer;" title="Bắt buộc nhập dữ liệu">*</span>
 						</td>	
 						<td align="right">Số điện thoại :</td>
 						<td align="left">
@@ -52,24 +48,28 @@
 						</td>
 					</tr>
 					<tr>
+						<td align="right">Role :</td>
+						<td align="left">
+							<select name="account_role" id="account_role" tabindex="3">
+								<option value="1" >Admin</option>
+								<option value="2" selected>Nhân viên</option>
+								<option value="3">Người dùng</option>
+							</select>
+						</td>		
 						<td align="right">Trạng thái</td>
 						<td align="left">
 							<select id="account_active" name="account_active">
 								<option value="-1">Khóa</option>
 								<option value="0">Chưa Active</option>
-								<option value="1">Đã Active</option>
+								<option value="1" selected>Đã Active</option>
 							</select>
-						</td>
-						<td align="right"></td>
-						<td align="left">
-							
 						</td>
 					</tr>
 					<tr>
 						<td colspan="4" align="center" height="50px">
-							<input onclick="saveAccount()" value="Lưu" type="button">
-							<input onclick="deleteAccount()" value="Xóa" type="button">
-							<input onclick="doReset()" value="Reset" type="button">
+							<input onclick="saveAccount()" value="Lưu" type="button" class="button">
+							<input onclick="deleteAccount()" value="Xóa" type="button" class="button">
+							<input onclick="doReset()" value="Reset" type="button" class="button">
 						</td>
 					</tr>
 				</tbody>
@@ -80,24 +80,27 @@
 	<div id="mask"></div>
 </div>
 <div style="padding-top:10px;font-size:14px" >
+	<div style="color: blue; font-size: 20px; text-align: center; font-weight: bold;">Quản Trị Người Dùng</div>
+	<div class="clearfix" id="shortcuts">
+		<ul>
+			<li class="first_li" onclick="showDialogAccount()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/img/icons/add-icon.png"><span>Thêm</span></a></li>
+		</ul>
+		<ul>
+			<li class="first_li" onclick="doDeleteAccounts()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/img/icons/delete-icon.png"><span>Xóa</span></a></li>
+		</ul>
+		<ul>
+			<li class="first_li" onclick="doShowDialogEdit()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/img/icons/edit-icon.png"><span>Sửa</span></a></li>
+		</ul>
+	</div>
 	<fieldset>
-		<legend>Lọc kết quả</legend>
 		<table>
 		<tbody>
 			<tr height="30px">
-				<td width="80px">Email :</td>
-				<td><input type="text" id="cond_email" style="width:400px" /></td>
-			</tr>
-			<tr height="30px">
-			<td colspan="2" align="center">
-				<input onclick="doFilter()" value="Tìm Kiếm" type="button">
-			</td>
+				<td width="50px">Email :</td>
+				<td><input type="text" id="cond_email" style="width:200px" /> <input onclick="doFilter()" value="Tìm Kiếm" type="button" class="button"></td>
 			</tr>
 		</tbody>
 		</table>
-	</fieldset>
-	<fieldset>
-		<legend>Danh Sách Tài Khoản</legend>
 		<div id="datagrid">
 			<table width="99%">
 				<thead>
@@ -121,16 +124,16 @@
 	var nPage = 1;
 	function message(msg,type) {
 		if(type==1) { //Thong diep thong bao
-			str = "<div class='positive'><span class='bodytext' style='padding-left:30px;'><strong>"+msg+"</strong></span></div>";
+			str = '<div id="success" class="info_div"><span class="ico_success">'+msg+'</span></div>';
 			byId("msg").innerHTML = str;
 		} else if(type == 0) { //Thong diep bao loi
-			str = "<div class='negative'><span class='bodytext' style='padding-left:30px;'><strong>"+msg+"</strong></span></div>";
+			str = '<div id="fail" class="info_div"><span class="ico_cancel">'+msg+'</span></div>';
 			byId("msg").innerHTML = str;
 		}
 	}
 	function showDialogAccount() {
 		doReset();
-		showDialog('#dialogAccount',600);
+		showDialog('#dialogAccount',700);
 	}
 	function selectpage(page) {
 		nPage = page;
@@ -139,20 +142,25 @@
 	function fillFormValues(cells) { //Lấy giá trị từ row được chọn đưa lên form (click vào nút "Chọn")		
 		byId("account_id").value = $.trim($(cells.td_id).text());
 		byId("account_username").value = $.trim($(cells.td_username).text());		
+		byId("account_email").value = $.trim($(cells.td_email).text());		
 		byId("account_sodienthoai").value = $.trim($(cells.td_sodienthoai).text());		
 		byId("account_active").value = $.trim($(cells.td_active).text());
 		switch($.trim($(cells.td_role).text())) {
-			case "Quản trị hệ thống":
+			case "Admin":
 				byId("account_role").value = 1;
 				break;
-			default:
+			case "Nhân viên":
 				byId("account_role").value = 2;
+				break;
+			default:
+				byId("account_role").value = 3;
 				break;
 		}		
 	}
 	function setRowValues(cells) { //Set giá trị từ form xuống row edit	
 		$(cells.td_id).text(byId("account_id").value);
 		$(cells.td_username).text(byId("account_username").value);			
+		$(cells.td_email).text(byId("account_email").value);			
 		$(cells.td_sodienthoai).text(byId("account_sodienthoai").value);			
 		$(cells.td_active).text(byId("account_active").value);		
 		switch(byId("account_active").value) {
@@ -168,23 +176,79 @@
 		}	
 		switch(byId("account_role").value) {
 			case "1":
-				$(cells.td_role).text("Quản trị hệ thống");
+				$(cells.td_role).text("Admin");
+				break;
+			case "2":
+				$(cells.td_role).text("Nhân viên");
 				break;
 			default:
 				$(cells.td_role).text("Người dùng");
 				break;
 		}		
 	}
-	function select_row(_this) {
+	function doShowDialogEdit() {
 		//jsdebug(_this);
+		if($("#datagrid :checkbox:checked").length < 1) {
+			alert('Vui lòng chọn tài khoản cần sửa!');
+			return;
+		}
+		if($("#datagrid :checkbox:checked").length > 1) {
+			alert('Chỉ được chọn 1 dòng để sửa!');
+			return;
+		}
 		doReset();	
-		showDialog('#dialogAccount',600);
-		var tr = _this.parentNode.parentNode;
+		showDialog('#dialogAccount',700);
+		var tr = $("#datagrid :checkbox:checked")[0].parentNode.parentNode;
 		var cells = tr.cells;
 		tr.style.backgroundColor = CONST_ROWSELECTED_COLOR;	
 		objediting = tr;			
 		fillFormValues(cells);
 		return false;
+	}
+	function doDeleteAccounts() {
+		if($("#datagrid :checkbox:checked").length < 1) {
+			alert('Vui lòng chọn tài khoản cần xóa!');
+			return;
+		}
+		if(!confirm("Bạn muốn xóa các tài khoản đã chọn?"))
+			return;
+		dataString = '';
+		$("#datagrid :checkbox:checked").each(function(){
+			dataString += '&account_id[]='+this.value;
+		});
+		byId("msg").innerHTML="";
+		block("#datagrid");
+		//alert(dataString);
+		$.ajax({
+			type: "POST",
+			cache: false,
+			url : url("/account/deleteNAccounts"),
+			data: dataString,
+			success: function(data){
+				unblock("#datagrid");	
+				if(data == AJAX_ERROR_NOTLOGIN) {
+					location.href = url("/admin/login");
+					return;
+				}
+				if(data == "DONE") {
+					//Load luoi du lieu	
+					loadListAccounts(nPage+searchString);
+					byId("account_id").value = "";
+					message("Xóa tài khoản thành công!",1);	
+				} else {
+					message('Xóa tài khoản không thành công!',0);					
+				}
+			},
+			error: function(data){ unblock("#datagrid");alert (data);}	
+		});
+	}
+	function doCheck(_this) {
+		var tr = _this.parentNode.parentNode;
+		if(_this.checked == false) {
+			tr.style.backgroundColor = '';	
+		} else {
+			tr.style.backgroundColor = CONST_ROWSELECTED_COLOR;	
+		}
 	}
 	function doReset() {
 		$("#formAccount")[0].reset(); //Reset form cua jquery, giu lai gia tri mac dinh cua cac field	
@@ -207,7 +271,7 @@
 					location.href = url("/admin/login");
 				} else {
 					$("#datagrid").html(data);
-					$("input:submit, input:button", "#datagrid").button();	
+					//$("input:submit, input:button", "#datagrid").button();	
 				}
 				
 			},
@@ -220,7 +284,7 @@
 	var isUpdate = false;
 	function saveAccount() {
 		checkValidate=true;
-		validate(['require','email'],'account_username',["Vui lòng nhập Email!",'Email không hợp lệ!']);
+		validate(['require'],'account_username',["Vui lòng nhập Username!"]);
 		if(byId("account_id").value=="") {
 			validate(['require',5],'account_password',["Vui lòng nhập Password!","Password phải lớn hơn 5 ký tự"]);
 		} else {
@@ -228,6 +292,7 @@
 				validate([5],'account_password',["Password phải lớn hơn 5 ký tự"]);
 			}
 		}
+		validate(['require','email'],'account_email',["Vui lòng nhập Email!",'Email không hợp lệ!']);
 		validate(['require'],'account_sodienthoai',["Vui lòng nhập số điện thoại!"]);
 		if(checkValidate == false)
 			return;
@@ -309,7 +374,7 @@
 		loadListAccounts('1'+searchString);
 	}
 	$(document).ready(function(){				
-		$("#title_page").text("Quản Trị Tài Khoản");
+		document.title = "Quản Trị Người Dùng";
 		loadListAccounts('1'+searchString);
 	});
 </script>

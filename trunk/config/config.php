@@ -5,7 +5,7 @@ ini_set('session.cookie_lifetime',10);
 define ('DEVELOPMENT_ENVIRONMENT',true);
 
 
-define('DB_NAME', 'cms');
+define('DB_NAME', 'mycms');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 define('DB_HOST', 'localhost');

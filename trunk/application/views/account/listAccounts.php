@@ -21,12 +21,12 @@
 		</tr>
 		<tr class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" style="font-weight:bold;height:20px;text-align:center;">
 			<td width="20px">#</td>
-			<td>Email</td>
-			<td>Điện thoại</td>
-			<td>Last Login</td>
-			<td>Quyền</td>
-			<td>Active</td>
-			<td width="40px">Xử lý</td>
+			<td style="border-left: 1px solid white">Username</td>
+			<td style="border-left: 1px solid white">Email</td>
+			<td style="border-left: 1px solid white">Last Login</td>
+			<td style="border-left: 1px solid white">Quyền</td>
+			<td style="border-left: 1px solid white">Active</td>
+			<td style="border-left: 1px solid white" width="20px">Chọn</td>
 		</tr>
 	</thead>
 	<tfoot>
@@ -43,14 +43,18 @@
 				echo "<tr class='normalRow'>";
 			?>
 				<td align="center"><?php echo $i?></td>
-				<td id="td_username" align="left"><?php echo $account["account"]["username"]?></td>
-				<td id="td_sodienthoai" align="left"><?php echo $account["account"]["sodienthoai"]?></td>
-				<td id="td_lastlogin" align="left"><?php  echo $html->format_date($account["account"]["lastlogin"],'d/m/Y H:i:s')?></td>
-				<td id="td_role" align="center">
+				<td style="border-left: 1px solid white" id="td_username" align="center"><?php echo $account["account"]["username"]?></td>
+				<td id="td_email" align="center" style="border-left: 1px solid white"><?php echo $account["account"]["email"]?></td>
+				<td id="td_sodienthoai" style="display:none"><?php echo $account["account"]["sodienthoai"]?></td>
+				<td id="td_lastlogin" align="center" style="border-left: 1px solid white"><?php  echo $html->format_date($account["account"]["lastlogin"],'d/m/Y H:i:s')?></td>
+				<td id="td_role" align="center" style="border-left: 1px solid white">
 				<?php 
 					switch($account["account"]["role"]) {
 						case 1:
-							echo "Quản trị hệ thống";
+							echo "Admin";
+							break;
+						case 2:
+							echo "Nhân viên";
 							break;
 						default:
 							echo "Người dùng";
@@ -59,7 +63,7 @@
 				?>
 				</td>
 				<td id="td_active" style="display:none;"><?php echo $account["account"]["active"]?></td>
-				<td id="td_active_display" align="center">
+				<td id="td_active_display" align="center" style="border-left: 1px solid white">
 					<?php 
 					if($account["account"]["active"]==0) {
 						echo "<div class='inactive' title='Chưa active'></div>";
@@ -71,8 +75,8 @@
 					?>
 				</td>
 				<td id="td_id" style="display:none;"><?php echo $account["account"]["id"]?></td>
-				<td align="center">
-					<input type="button" onclick="select_row(this)" value="Chọn" />
+				<td align="center" style="border-left: 1px solid white">
+					<input type="checkbox" onclick="doCheck(this)" value="<?php echo $account["account"]["id"]?>" />
 				</td>
 			</tr>
 			<?php
