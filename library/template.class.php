@@ -37,13 +37,20 @@ class Template {
         extract($this->variables);
 		include (ROOT . DS . 'application' . DS . 'views' . DS . 'layout.php');
     }  
-
     function renderAdminPage()
     {
         $html = new HTML;
         extract($this->variables);
-		//die(ROOT . DS . 'application' . DS . 'views' . DS . 'admin_layout.php');
         include (ROOT . DS . 'application' . DS . 'views' . DS . 'admin_layout.php');
+    }
+	function renderIndexPage()
+    {
+		global $cache;
+		$data = $cache->get("menuList");
+		$this->set('menuList',$data);
+        $html = new HTML;
+        extract($this->variables);
+        include (ROOT . DS . 'application' . DS . 'views' . DS . 'index.php');
     }
 	function renderPage()
     {

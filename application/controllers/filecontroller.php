@@ -104,7 +104,8 @@ class FileController extends VanillaController {
 					$file_id = $this->file->insert(true);
 				}
 			}
-			echo $file_id;
+			$value = "{'id':'".$file_id."','url':'".BASE_PATH.'/upload/files/'.$fname."'}";
+			print($value);
 		} catch (Exception $e) {
 			echo 'ERROR_SYSTEM';
 		}

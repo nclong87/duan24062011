@@ -1,6 +1,5 @@
 <script type="text/javascript" src="<?php echo BASE_PATH ?>/public/js/jquery.form.js"></script>
 <div style="height: 115px; width: 802px; position: relative;">
-	<form id="formUpload" ENCTYPE="multipart/form-data" >
 	<fieldset>
 	<table width="100%">
 		<tbody>
@@ -9,34 +8,28 @@
 				</td>
 			</tr>
 			<tr>
-				<td width="200px">
-				Chọn File <span class="tipMsg" title="Chỉ cho phép các định dạng ảnh sau : jpg,png,bmp,jpeg,gif">*</span> :<br/>
-				<input type="file" name="image" />
+				<td width="500px">
+				<form id="formUploadImage" ENCTYPE="multipart/form-data" method="POST" >
+				Chọn File <span class="tipMsg" title="Chỉ cho phép các định dạng ảnh sau : jpg,png,bmp,jpeg,gif">*</span> : <input type="file" name="image" /> <input type="submit" value="Upload" class="button"> 
+				</form>
 				</td>
-				<td rowspan="2" align="left" valign="top" style="padding-left:50px">
-					URL hình ảnh :<br/>
-					<input type="text" style="width: 100%; background-color: wheat; height: 20px;" readonly id="link_image" onfocus="this.select()"/>
-				</td>
-			</tr>
-			<tr>
-				<td align="center">
-					<input type="submit" value="Upload">
+				<td  width="300px">
+					Lọc theo tên : <input type="text" width="80px" name="image_keyword" id="image_keyword" value=""/>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 	</fieldset>
-	</form>
 </div>
 <div style="float: left;" id="lstImage">
 </div>
 <script>
 function image_msg(msg,type) {
 	if(type==1) { //Thong diep thong bao
-		str = "<div class='positive'><span class='bodytext' style='padding-left:30px;'><strong>"+msg+"</strong></span></div>";
+		str = '<div id="success" class="info_div"><span class="ico_success">'+msg+'</span></div>';
 		byId("image_msg").innerHTML = str;
 	} else if(type == 0) { //Thong diep bao loi
-		str = "<div class='negative'><span class='bodytext' style='padding-left:30px;'><strong>"+msg+"</strong></span></div>";
+		str = '<div id="fail" class="info_div"><span class="ico_cancel">'+msg+'</span></div>';
 		byId("image_msg").innerHTML = str;
 	}
 }
@@ -45,14 +38,14 @@ function selectpage(page) {
 }
 function loadimages(page){
 	byId("image_msg").innerHTML = "";
-	block("#dialog_panel");
+	block("#lstImage");
 	if(page == null)
 		page = 1;
 	$.ajax({
 		type: "GET",
-		url : url("/image/showimage/"+page),
+		url : url("/image/showimage/"+page+"/"+byId("image_keyword").value),
 		success: function(data){
-			unblock("#dialog_panel");
+			unblock("#lstImage");
 			$("#lstImage").html(data);
 			$(".image").each(function(){
 				if($(this).width()>190)
@@ -61,7 +54,7 @@ function loadimages(page){
 					$(this).height(140);
 			});
 		},
-		error: function(data){ alert (data);unblock("#dialog_panel");}	
+		error: function(data){ alert (data);unblock("#lstImage");}	
 	});
 }
 $(document).ready(function() {
@@ -82,7 +75,13 @@ $(document).ready(function() {
 		} 
 	}; 
 	// pass options to ajaxForm 
-	$('#formUpload').ajaxForm(options); 
+	$('#formUploadImage').ajaxForm(options); 
+	$("#image_keyword").keyup(function(event){
+		if(event.keyCode == 13) {
+			loadimages(1);
+		}
+		//jsdebug(event);
+	});
 	loadimages(1);
 });
 </script>

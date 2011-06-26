@@ -33,7 +33,7 @@
 					?>
 				</td>
 				<td align="center">
-					<input type="button" onclick="select_row(this)" value="Chọn" />
+					<input type="button" onclick="select_row(this)" value="Chọn"  class="button"/>
 				</td>
 			</tr>
 			<?php

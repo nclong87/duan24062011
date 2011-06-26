@@ -88,6 +88,7 @@ class AccountController extends VanillaController {
 		$id = $_POST['account_id'];
 		$username = $_POST['account_username'];
 		$password = $_POST['account_password'];
+		$email = $_POST['account_email'];
 		$sodienthoai = $_POST['account_sodienthoai'];
 		$role = $_POST['account_role'];
 		$active = $_POST['account_active'];
@@ -100,6 +101,7 @@ class AccountController extends VanillaController {
 				die('ERROR_SYSTEM');
 			$this->account->id = null;
 			$this->account->username = $username;
+			$this->account->email = $email;
 			$this->account->password = md5($password);
 			$this->account->sodienthoai = $sodienthoai;
 			$this->account->timeonline = 0;
@@ -113,6 +115,7 @@ class AccountController extends VanillaController {
 			$this->account->username = $username;
 			if(isEmpty($password)==false)
 				$this->account->password = md5($password);
+			$this->account->email = $email;
 			$this->account->sodienthoai = $sodienthoai;
 			$this->account->role = $role;
 			$this->account->active = $active;
@@ -130,6 +133,19 @@ class AccountController extends VanillaController {
 				die('ERROR_SYSTEM');
 			$this->account->id = $id;
 			$this->account->delete();
+			echo 'DONE';
+		} else {
+			echo 'ERROR_SYSTEM';
+		}
+	}
+	function deleteNAccounts() {
+		$this->checkAdmin(true);
+		if(isset($_POST["account_id"])) {
+			$lstAccounts = $_POST["account_id"];
+			foreach($lstAccounts as $account_id) {
+				$this->account->id = $account_id;
+				$this->account->delete();
+			}
 			echo 'DONE';
 		} else {
 			echo 'ERROR_SYSTEM';
@@ -184,7 +200,7 @@ class AccountController extends VanillaController {
 				$this->account->id = $account[0]['account']['id'];
 				$this->account->lastlogin = GetDateSQL();
 				$this->account->save();
-				$this->setModel('nhathau');
+				/* $this->setModel('nhathau');
 				$this->nhathau->where('and status>=0 and account_id='.$account[0]['account']['id']);
 				$nhathau = $this->nhathau->search('id,displayname,account_id,diemdanhgia,nhathau_alias');
 				if(!empty($nhathau))
@@ -195,7 +211,7 @@ class AccountController extends VanillaController {
 				$myprojects = array();
 				foreach($data as $duan)
 					array_push($myprojects,$duan['duan']['id']);
-				$_SESSION['myprojects'] = $myprojects;	
+				$_SESSION['myprojects'] = $myprojects; */	
 				redirect($url);
 			}
 		}
@@ -321,9 +337,10 @@ class AccountController extends VanillaController {
 				die('ERROR_SYSTEM');
 			$username = mysql_real_escape_string($username);
 			$this->account->where(" and active>=0 and username='$username'");
-			$data = $this->account->search('id');
+			$data = $this->account->search('id,email');
 			if(empty($data))
 				die('ERROR_NOTEXIST');
+			$email = $data[0]['account']['email'];
 			$account_id = $data[0]['account']['id'];
 			$this->setModel('resetpassword');
 			$this->resetpassword->where(" and account_id=$account_id");
@@ -356,7 +373,7 @@ class AccountController extends VanillaController {
 			$sender = $priSenders[mt_rand(0, count($priSenders)-1)];
 			include (ROOT.DS.'library'.DS.'sendmail.php');
 			$mail = new sendmail();
-			$mail->send($username,'JobBid.vn - Mail Xác Nhận Khôi Phục Mật Khẩu Đăng Nhập!',$content,$sender);
+			$mail->send($email,'JobBid.vn - Mail Xác Nhận Khôi Phục Mật Khẩu Đăng Nhập!',$content,$sender);
 			$_SESSION['sendresetpass'] = $_SESSION['sendresetpass'] + 1;
 			echo 'DONE';
 		} catch (Exception $e) {

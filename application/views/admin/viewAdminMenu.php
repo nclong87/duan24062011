@@ -12,12 +12,11 @@
 </style>
 <div class="boxes" id="dialogMenu" >
 	<fieldset id="dialog" class="window">
-		<div class="ui-dialog-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="text-align: center; font-size: 13pt; padding: 2px;margin-bottom:3px;" ><span id="title_dialog">Menu Form</span>
+		<div class="ui-dialog-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="text-align: center; font-size: 13pt; padding: 2px;margin-bottom:3px;" ><span id="title_dialog">Thông Tin Menu</span>
 		<a href="#" onclick="closeDialog('#dialogMenu')" class="ui-dialog-titlebar-close ui-corner-all" role="button" unselectable="on" style="-moz-user-select: none; float: right;"><span class="ui-icon ui-icon-closethick" unselectable="on" style="-moz-user-select: none;">close</span></a>
 		</div>
 		<form id="formMenu">
 		<fieldset>
-			<legend><span style="font-weight:bold;">Thông Tin Menu</span></legend>
 			<table class="center" width="100%">
 				<thead>
 					<tr>
@@ -66,9 +65,9 @@
 					</tr>
 					<tr>
 						<td colspan="6" align="center" height="50px">
-							<input onclick="saveMenu()" value="Lưu" type="button">
-							<input onclick="deleteMenu()" value="Xóa" type="button">
-							<input onclick="doReset()" value="Reset" type="button">
+							<input onclick="saveMenu()" value="Lưu" type="button" class="button">
+							<input onclick="deleteMenu()" value="Xóa" type="button" class="button">
+							<input onclick="doReset()" value="Reset" type="button" class="button">
 						</td>
 					</tr>
 				</tbody>
@@ -79,17 +78,13 @@
 	<div id="mask"></div>
 </div>
 <div style="padding-top:10px;font-size:14px" >
-	<div style="text-align:left;padding:10px;width:90%;float:left;">
-		<div id="top_icon" style="padding-top:0;">
-		  <div align="center">
-			<div><a href="#"><img src="<?php echo BASE_PATH ?>/public/images/icons/add_icon.png" alt="big_settings" width="25" height="26" border="0" /></a></div>
-					<span class="toplinks">
-			  <a href="#" onclick="showDialogMenu()"><span class="toplinks">THÊM MENU</span></a></span><br />
-		  </div>
-		</div>
+	<div style="color: blue; font-size: 20px; text-align: center; font-weight: bold;">Quản Trị Menu</div>
+	<div class="clearfix" id="shortcuts">
+		<ul>
+			<li class="first_li" onclick="showDialogMenu()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/img/icons/add-icon.png"><span>Thêm</span></a></li>
+		</ul>
 	</div>
 	<fieldset>
-		<legend>Danh Sách Menu</legend>
 		<div id="datagrid">
 			<table width="99%">
 				<thead>
@@ -110,17 +105,17 @@
 	var objediting; //Object luu lai row dang chinh sua
 	function message(msg,type) {
 		if(type==1) { //Thong diep thong bao
-			str = "<div class='positive'><span class='bodytext' style='padding-left:30px;'><strong>"+msg+"</strong></span></div>";
+			str = '<div id="success" class="info_div"><span class="ico_success">'+msg+'</span></div>';
 			byId("msg").innerHTML = str;
 		} else if(type == 0) { //Thong diep bao loi
-			str = "<div class='negative'><span class='bodytext' style='padding-left:30px;'><strong>"+msg+"</strong></span></div>";
+			str = '<div id="fail" class="info_div"><span class="ico_cancel">'+msg+'</span></div>';
 			byId("msg").innerHTML = str;
 		}
 	}
 	function showDialogMenu() {
 		doReset();
 		isUpdate = false;
-		showDialog('#dialogMenu',500);
+		showDialog('#dialogMenu',700);
 	}
 	function fillFormValues(cells) { //Lấy giá trị từ row được chọn đưa lên form (click vào nút "Chọn")		
 		byId("menu_id").value = $.trim($(cells.td_id).text());
@@ -139,7 +134,7 @@
 	function select_row(_this) {
 		//jsdebug(_this);
 		doReset();	
-		showDialog("#dialogMenu");
+		showDialog("#dialogMenu",700);
 		var tr = _this.parentNode.parentNode;
 		var cells = tr.cells;
 		tr.style.backgroundColor = CONST_ROWSELECTED_COLOR;	
@@ -169,7 +164,7 @@
 					location.href = url("/admin/login");
 				} else {
 					$("#datagrid").html(data);
-					$("input:submit, input:button", "#datagrid").button();	
+					//$("input:submit, input:button", "#datagrid").button();	
 				}
 				
 			},
@@ -342,7 +337,7 @@
 	}
 	$(document).ready(function(){				
 		//$("#widget_content").css("width","300px");
-		$("#title_page").text("Quản Trị Menu");
+		document.title = "Quản Trị Menu";
 		loadListMenus();
 	});
 </script>

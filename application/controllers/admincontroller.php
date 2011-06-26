@@ -41,6 +41,14 @@ class AdminController extends VanillaController {
 		$this->checkAdmin(false);
 		$this->_template->renderAdminPage(); 
 	}
+	function viewAdminWidget() {
+		$this->checkAdmin(false);
+		$this->_template->renderAdminPage(); 
+	}
+	function viewAdminSlideshow() {
+		$this->checkAdmin(false);
+		$this->_template->renderAdminPage(); 
+	}
 	function viewAdminMenu() {
 		$this->checkAdmin(false);
 		$this->_template->renderAdminPage(); 
@@ -243,7 +251,7 @@ class AdminController extends VanillaController {
                     rename($str,$str2);
 					$this->setModel("image");
 					$this->image->id = null;
-					$this->image->filename = $fname;
+					$this->image->filename = $filename;
 					$this->image->fileurl = BASE_PATH."/upload/images/".$fname;
 					$this->image->save();
                 }
