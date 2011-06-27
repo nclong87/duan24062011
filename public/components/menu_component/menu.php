@@ -1,15 +1,13 @@
-<ul id="menu" style="padding-bottom:5px">
+<ul class="menu">
 <?php
+$i = 0;
+$len = count($menuList);
 foreach($menuList as $menu) {
-	echo "<li id='".$menu["menu"]["id"]."'><a class='menulink' href='".BASE_PATH.$menu["menu"]["url"]."'>".$menu["menu"]["name"]."</a></li>";
+	if($i<$len - 1)
+		echo "<li><a id='".$menu["menu"]["id"]."' href='".BASE_PATH.$menu["menu"]["url"]."'>".$menu["menu"]["name"]."</a></li>";
+	else
+		echo "<li class='last-item'><a id='".$menu["menu"]["id"]."' href='".BASE_PATH.$menu["menu"]["url"]."'>".$menu["menu"]["name"]."</a></li>";
+	$i++;
 }
-?>	
-	<li style="float: right; margin-right: 5px;border:none">
-	<div class="search">
-		<form id="formsearch" method="post" action="<?php echo BASE_PATH?>/duan/search">
-		<input type="text" class="txtsearch" name="keyword" id="keyword" value="<?php echo isset($_POST["keyword"])?$_POST["keyword"]:"" ?>"/>
-		<div class="textboxstyle" title="Tìm kiếm" onclick="$('#formsearch').submit();"></div>
-		</form>
-	</div>
-	</li>
+?>
 </ul>

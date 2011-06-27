@@ -1,204 +1,171 @@
-<div id="content" style="width:100%;">
-	<div class="ui-widget-header ui-helper-clearfix ui-corner-top" style="border:none;padding-left: 5px;text-align:center" id="content_title">CÁCH THỨC HOẠT ĐỘNG</div>
-	<div style="padding:20px;padding-bottom:5px">
-	<img alt="project" style="cursor:pointer" id="help_project" src="<?php echo BASE_PATH ?>/public/images/icons/project.png"/>
-	<img alt="project" src="<?php echo BASE_PATH ?>/public/images/icons/arrow.png"/>
-	<img alt="project" style="cursor:pointer" id="help_bid" src="<?php echo BASE_PATH ?>/public/images/icons/bid.png"/>
-	<img alt="project" src="<?php echo BASE_PATH ?>/public/images/icons/arrow.png"/>
-	<img alt="project" style="cursor:pointer" id="help_select" src="<?php echo BASE_PATH ?>/public/images/icons/select.png"/>
-	<img alt="project" src="<?php echo BASE_PATH ?>/public/images/icons/arrow.png"/>
-	<img alt="project" style="cursor:pointer" id="help_payment" src="<?php echo BASE_PATH ?>/public/images/icons/payment.png"/><br/>
-	<ul id="intro">
-		<li><a href="http://www.jobbid.vn" class="link">Jobbid.vn</a> là nơi tin cậy để bạn có thể gửi dự án đấu giá công khai, qua đó tìm được ứng viên thích hợp để thực hiện dự án của bạn.</li>
-		<li>Thông qua trang web, các bạn có thể tìm kiếm được những công việc bán thời gian hoặc các dự án nhỏ phù hợp với khả năng mà bạn có thể hoàn thành một cách tốt nhất.</li>
-		<li>Là nơi lưu trữ, chia sẻ những dự án nhỏ.</li>
-		<li>Là kênh thông tin tuyển dụng uy tín.</li>
-		<li><span style="color:red">Hoàn toàn miễn phí.</span></li>
-	</ul>
-	</div>
-	<div id="vipproject" class="ui-widget-header ui-helper-clearfix" style="border:none;padding-left: 180px;margin-top:5px;"><div style="float:left"><span style="float: left;" class="ratingStar filledRatingStar" id="ctl00_SampleContent_ThaiRating_Star_1">&nbsp;</span><span style="float: left;" class="ratingStar filledRatingStar" id="ctl00_SampleContent_ThaiRating_Star_1">&nbsp;</span><span style="float: left;" class="ratingStar filledRatingStar" id="ctl00_SampleContent_ThaiRating_Star_1">&nbsp;</span></div><div style="float:left"><span style="float: left;padding-right:5px;padding-left:5px">Các dự án được tài trợ</span></div><div style="float:left"><span style="float: left;" class="ratingStar filledRatingStar" id="ctl00_SampleContent_ThaiRating_Star_1">&nbsp;</span><span style="float: left;" class="ratingStar filledRatingStar" id="ctl00_SampleContent_ThaiRating_Star_1">&nbsp;</span><span style="float: left;" class="ratingStar filledRatingStar" id="ctl00_SampleContent_ThaiRating_Star_1">&nbsp;</span></div> </div>
-	<div style="padding-bottom:10px;">
-		<table width="100%">
-			<thead>
-				<tr class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" style="font-weight:bold;height:20px;text-align:center;">
-					<td>Tên dự án</td>
-					<td style="width:100px">Giá thầu TB</td>
-					<td>Bid</td>
-					<td style="width:120px">Lĩnh vực</td>
-					<td style="width:50px">Xem</td>
-					<td style="width:110px">Còn</td>
-				</tr>
-			</thead>
-			<tbody style="font-weight:bold">
-				<?php
-				$i=0;
-				foreach($lstVipPrejects as $duan) {
-					$i++;
-					if($i%2==0)
-						echo "<tr class='alternateRow' >";
-					else 
-						echo "<tr class='normalRow'>";
-					?>
-						<td style="display:none"><?php echo $duan["duan"]["id"]?></td>
-						<td align="left"><a class='link' href='<?php echo BASE_PATH."/duan/view/".$duan["duan"]["id"]."/".$duan["duan"]["alias"] ?>'><?php echo $duan["duan"]["tenduan"]?></a></td>
-						<?php
-						if($duan['duan']['isbid']==1) {
-						?>
-						<td align="center" style="width:100px" ><?php echo $html->FormatMoney($duan["duan"]["averagecost"])?></td>
-						<td align="center" ><?php echo $duan["duan"]["bidcount"] ?></td>
-						<?php
-						} else
-							echo '<td align="center" colspan="2" ><font color="green">Liên hệ trực tiếp</font></td>';
-						?>
-						<td align="center" style="width:120px"><?php  echo $duan["linhvuc"]["tenlinhvuc"] ?></td>
-						<td align="center" style="width:50px"><?php  echo $duan["duan"]["views"] ?></td>
-						<td align="center" style="width:110px"><?php echo getDaysFromSecond($duan["duan"]["active"]==1?$duan[""]["timeleft"]:0)?></td>
-					</tr>
-					<?php
-				}
-				?>
-			</tbody>
-		</table>
-	</div>
-	<div  class="ui-widget-header ui-helper-clearfix" style="border:none;padding-left: 5px;margin-top:5px">Các dự án đang trên sàn giao dịch</div>
-	<div id="datagrid1" style="padding-bottom:10px;">
-		<table width="100%">
-			<thead>
-				<tr class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" style="font-weight:bold;height:20px;text-align:center;">
-					<td>Tên dự án</td>
-					<td style="width:100px">Giá thầu TB</td>
-					<td>Bid</td>
-					<td style="width:120px">Lĩnh vực</td>
-					<td style="width:50px">Xem</td>
-					<td style="width:110px">Còn</td>
-				</tr>
-			</thead>
-			<tfoot>
-				<tr>
-					<td colspan="6" align="center" id="tfoot_viewmore"><span class="link" style="cursor:pointer" onclick="viewmore()">Xem thêm...</span></td>
-				</tr>
-			</tfoot>
-			<tbody id="tbody_newprojects">
-				<?php
-				$i=0;
-				foreach($lstData1 as $duan) {
-					$i++;
-					if($i%2==0)
-						echo "<tr class='alternateRow' >";
-					else 
-						echo "<tr class='normalRow'>";
-					?>
-						<td style="display:none"><?php echo $duan["duan"]["id"]?></td>
-						<td align="left"><a class='link' href='<?php echo BASE_PATH."/duan/view/".$duan["duan"]["id"]."/".$duan["duan"]["alias"] ?>'><?php echo $duan["duan"]["tenduan"]?></a></td>
-						<?php
-						if($duan['duan']['isbid']==1) {
-						?>
-						<td align="center" style="width:100px"><?php echo $html->FormatMoney($duan["duan"]["averagecost"])?></td>
-						<td align="center" ><?php echo $duan["duan"]["bidcount"] ?></td>
-						<?php
-						} else
-							echo '<td align="center" colspan="2" ><font color="green">Liên hệ trực tiếp</font></td>';
-						?>
-						<td align="center" style="width:120px"><?php  echo $duan["linhvuc"]["tenlinhvuc"] ?></td>
-						<td align="center" style="width:50px"><?php  echo $duan["duan"]["views"] ?></td>
-						<td align="center" style="width:110px"><?php echo getDaysFromSecond($duan["duan"]["active"]==1?$duan[""]["timeleft"]:0)?></td>
-					</tr>
-					<?php
-				}
-				?>
-			</tbody>
-		</table>
-	</div>
-	<div  class="ui-widget-header ui-helper-clearfix" style="border:none;padding-left: 5px">các dự án vừa kết thúc</div>
-	<div id="datagrid2" style="padding-bottom:10px;">
-		<table width="100%">
-			<thead>
-				<tr class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" style="font-weight:bold;height:20px;text-align:center;">
-					<td>Tên dự án</td>
-					<td style="width:100px">Giá thầu</td>
-					<td>Bid</td>
-					<td style="width:120px">Lĩnh vực</td>
-					<td style="width:200px">Trúng thầu</td>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-				$i=0;
-				foreach($lstData2 as $duan) {
-					$i++;
-					if($i%2==0)
-						echo "<tr class='alternateRow' >";
-					else 
-						echo "<tr class='normalRow'>";
-					?>
-						<td style="display:none"><?php echo $duan["duan"]["id"]?></td>
-						<td align="left"><a class='link' href='<?php echo BASE_PATH."/duan/view/".$duan["duan"]["id"]."/".$duan["duan"]["alias"] ?>'><?php echo $duan["duan"]["tenduan"]?></a></td>
-						<td align="center" style="width:100px" ><?php echo $html->FormatMoney($duan["hosothau"]["giathau"])?></td>
-						<td align="center" ><?php echo $duan["duan"]["bidcount"] ?></td>
-						<td align="center" style="width:120px"><?php  echo $duan["linhvuc"]["tenlinhvuc"] ?></td>
-						<td align="left" style="width:200px">
-						<a class='link' title="<?php echo $duan["nhathau"]["displayname"]?>" href='<?php echo BASE_PATH ?>/nhathau/xem_ho_so/<?php echo $duan["duan"]["nhathau_id"].'/'.$duan["nhathau"]['nhathau_alias'] ?>'><?php echo $html->trimString($duan["nhathau"]["displayname"])?></a>
-						</td>
-					</tr>
-					<?php
-				}
-				?>
-			</tbody>
-		</table>
-	</div>
-	<div  class="ui-widget-header ui-helper-clearfix" style="border:none;padding-left: 5px">Tìm dự án theo lĩnh vực</div>	
-	<div style="padding-top: 5px; padding-bottom: 5px; position: relative; float: left;">
-	<?php
-	foreach($lstLinhvuc as $e) {
-		echo "<div class='divfloat1'><a href='".BASE_PATH."/linhvuc&amp;linhvuc_id=".$e["linhvuc"]["id"]."' class='link'>".$e["linhvuc"]["tenlinhvuc"]."</a> (".$e["linhvuc"]["soduan"].")</div>";
-	}
-	?>
+<style>
+body header {margin-bottom:0}
+body #content .padding {padding:0 12px}
+body #content .col-1 {width:292px;margin-right:9px}
+body #content .col-2 {width:292px}
+body #content .col-3 {width:597px;margin-right:40px}
+body #content {border-radius:0;-moz-border-radius:0;-webkit-border-radius:0}
+body footer .col-1 {width:190px;margin-right:55px}
+body footer .col-2 {width:110px;margin-right:55px}
+body footer .col-3 {width:140px;margin-right:65px}
+body footer .col-4 {width:235px}
+</style>
+<div class="row-3">
+	<div class="slider-wrapper">
+		<div class="slider">
+		  <ul class="items">
+			<li><img src="<?php echo BASE_PATH ?>/public/images/slider-img1.jpg" alt="">
+				<strong class="banner">
+					<strong class="b1">Trang chủ</strong>
+					<strong class="b2">is equity</strong>
+					<strong class="b3">Innovation and flexibility, quick and<br> high results - oriented work</strong>
+				</strong>
+			</li>
+			<li><img src="<?php echo BASE_PATH ?>/public/images/slider-img2.jpg" alt="">
+				<strong class="banner">
+					<strong class="b1">our aim is</strong>
+					<strong class="b2">Dedicated</strong>
+					<strong class="b3">To conducting business affairs using<br>the highest standards</strong>
+				</strong>
+			</li>
+			<li><img src="<?php echo BASE_PATH ?>/public/images/slider-img3.jpg" alt="">
+				<strong class="banner">
+					<strong class="b1">encourage</strong>
+					<strong class="b2">Business</strong>
+					<strong class="b3">Success and growth with our<br>professionals of this sphere</strong>
+				</strong>
+			</li>
+		  </ul>
+		  <a class="prev" href="#">prev</a>
+		  <a class="next" href="#">prev</a>
+		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	var more=2;
-	function viewmore() {
-		//alert('aa');
-		class_name = byId("tbody_newprojects").lastChild.className;
-		$("#tfoot_viewmore").html("<img src='<?php echo BASE_PATH?>/public/images/icons/loading.gif'/>");
-		$.ajax({
-			type: "GET",
-			cache: false,
-			url : url("/index/viewmore/"+more),
-			success: function(data){
-				//alert(data);return;
-				if(data.length<2) {
-					$("#tfoot_viewmore").html('');
-					return;
-				}
-				var jsonObj = eval( "(" + data + ")" );
-				var result = "";
-				i=0;
-				for(i;jsonObj[i]!=null;i++) {
-					if(class_name=="normalRow")
-						class_name="alternateRow";
-					else
-						class_name="normalRow";
-					tr='<tr class="'+class_name+'" style="display: none;"><td align="left"><a class="link" href="'+jsonObj[i].linkduan+'">'+jsonObj[i].tenduan+'</a></td><td align="center">'+jsonObj[i].averagecost+'</td><td align="center">'+jsonObj[i].bidcount+'</td><td align="center">'+jsonObj[i].tenlinhvuc+'</td><td align="center">'+jsonObj[i].views+'</td><td align="center">'+jsonObj[i].lefttime+'</td></tr>';
-					$("#tbody_newprojects").append($(tr).fadeIn(2000));
-				}
-				if(i==15) {
-					$("#tfoot_viewmore").html('<span class="link" style="cursor:pointer" onclick="viewmore()">Xem thêm...</span>');
-					more++;
-				}
-				else
-					$("#tfoot_viewmore").html('');
-				//alert(result);
-			},
-			error: function(data){ $("#tfoot_viewmore").html('<span class="link" style="cursor:pointer" onclick="viewmore()">Xem thêm...</span>');alert (data);}	
-		});
-	}
+<section id="content">
+	<div class="padding">
+		<div class="box-bg margin-bot">
+			<div class="wrapper">
+				<div class="col-1">
+					<div class="box first">
+						<div class="pad">
+							<div class="wrapper indent-bot">
+								<strong class="numb img-indent2">01</strong>
+								<div class="extra-wrap">
+									<h3 class="color-1"><strong>Careful</strong>Analysis</h3>
+								</div>
+							</div>
+							<div class="wrapper">
+								<a class="button img-indent-r" href="#">>></a>
+								<div class="extra-wrap">
+									Point.co is one of <a class="link" target="_blank" href="http://blog.templatemonster.com/free-website-templates/ ">free website templates</a> created by TemplateMonster.com.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-1">
+					<div class="box second">
+						<div class="pad">
+							<div class="wrapper indent-bot">
+								<strong class="numb img-indent2">02</strong>
+								<div class="extra-wrap">
+									<h3 class="color-2"><strong>Quick</strong>Research</h3>
+								</div>
+							</div>
+							<div class="wrapper">
+								<a class="button img-indent-r" href="#"></a>
+								<div class="extra-wrap">
+									This <a class="link" target="_blank" href="http://blog.templatemonster.com/2011/06/13/free-website-template-jquery-slider/ ">Template</a> goes with two packages – with PSD files and without them.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-2">
+					<div class="box third">
+						<div class="pad">
+							<div class="wrapper indent-bot">
+								<strong class="numb img-indent2">03</strong>
+								<div class="extra-wrap">
+									<h3 class="color-3"><strong>New</strong>Strategies</h3>
+								</div>
+							</div>
+							<div class="wrapper">
+								<a class="button img-indent-r" href="#">>></a>
+								<div class="extra-wrap">
+									It has several pages: <a class="link" href="index.html">Home</a>, <a class="link" href="news.html">News</a>, <a class="link" href="services.html">Services</a>, <a class="link" href="products.html">Products</a>, <a class="link" href="contacts.html">Contacts</a>.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wrapper">
+			<div class="col-3">
+				<div class="indent">
+					<h2>Our Mission</h2>
+					<p class="color-4 p1">Donec vitae massa sit amet lectus condimentum aliquam vestibulum tempor nunc vel mi laoreet nec condimentum mauris convallis. Praesent lobortis, lectus a viverra faucibus, urna turpis sodales purus, magnaorem ipsum dolor ser adipiscing elit sed diam nonummy nibh euismod sit amet ornare urna augue ut mauris.</p>
+					<div class="wrapper">
+						<figure class="img-indent3"><img src="<?php echo BASE_PATH ?>/public/images/page1-img1.png" alt="" /></figure>
+						<div class="extra-wrap">
+							<div class="indent2">
+								Cras placerat, risus ac porta auctor, dui neque varius libero, sed rutrum diam mauris sed lorem. Ut at risus eu dui pretium sodales proin fermentum condimentum eros quis tincidunt fraesent eleifend tempor nisi, in adipiscing felis molestie vitae. Sed et massa justo. Pellentesque turpis lorem, ornare sit amet vulputate at, consectetur 
+							</div>
+						</div>
+					</div>
+					<a class="button-2" href="#">Read More</a>
+				</div>
+			</div>
+			<div class="col-2">
+				<div class="block-news">
+					<h3 class="color-4 p2">Recent News</h3>
+					<div class="wrapper p2">
+						<time class="tdate-1 fleft" datetime="2011-05-29"><strong>29</strong>may</time>
+						<div class="extra-wrap">
+							<h5>Utatse eudui pretium</h5> 
+							sodales proin fermen<br>tum condimentum eros quis tincidunt fraesent eleifend tempor nisi, in adipiscing... <a href="#">more</a>
+						</div>
+					</div>
+					<div class="wrapper">
+						<time class="tdate-1 fleft" datetime="2011-05-24"><strong>24</strong>may</time>
+						<div class="extra-wrap">
+							<h5>Felis molestie vitae</h5> 
+							Sed massa justo pellen<br>tesque turpis lorem, ornare sit amet vulpate at, consectetur vitae nunc... <a href="#">more</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
 	$(document).ready(function() {
+		$('.slider')._TMS({
+			prevBu:'.prev',
+			nextBu:'.next',
+			playBu:'.play',
+			duration:800,
+			easing:'easeOutQuad',
+			preset:'simpleFade',
+			pagination:false,
+			slideshow:3000,
+			numStatus:false,
+			pauseOnHover:true,
+			banners:true,
+			waitBannerAnimation:false,
+			bannerShow:function(banner){
+				banner
+					.hide()
+					.fadeIn(500)
+			},
+			bannerHide:function(banner){
+				banner
+					.show()
+					.fadeOut(500)
+			}
+		});
 		menuid = '#home';
-		$("#menu "+menuid).addClass("current");
-		boundTip("help_project","Chủ dự án sẽ đưa dự án cần tìm kiếm nhà thầu lên jobbid.vn",200,"hover");
-		boundTip("help_bid","Các nhà thầu sẽ đưa ra mức giá và thời gian để thực hiện dự án này, để có thể tham gia đấu thầu.<br/>Các nhà thầu cần tạo 1 bộ hồ sơ nhà thầu trên jobbid.vn để chủ dự án có thể xem và lựa chọn ra nhà thầu tốt nhất.",300,"hover");
-		boundTip("help_select","Chủ dự án sẽ so sánh các nhà thầu đã tham gia đấu giá dự án của mình và chọn ra 1 nhà thầu ưng ý nhất.",200,"hover");
-		boundTip("help_payment","Chủ dự án và nhà thầu sẽ liên hệ với nhau để thỏa thuận về việc thực hiện dự án và thanh toán.",200,"hover");
+		$(".menu "+menuid).addClass("active");
 	});
 </script>

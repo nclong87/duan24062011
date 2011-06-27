@@ -87,7 +87,7 @@
 	<div style="color: blue; font-size: 20px; text-align: center; font-weight: bold;">Quản Trị Ảnh Slideshow</div>
 	<div class="clearfix" id="shortcuts">
 		<ul>
-			<li class="first_li" onclick="showDialogSlideshow()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/img/icons/add-icon.png"><span>Thêm</span></a></li>
+			<li class="first_li" onclick="showDialogSlideshow()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/images/icons/add-icon.png"><span>Thêm</span></a></li>
 		</ul>
 	</div>
 	<fieldset>
@@ -129,7 +129,7 @@
 		byId("slideshow_url").value = $.trim($(cells.td_url).text());	
 		byId("slideshow_image").value = $.trim($(cells.td_image).text());	
 		idchosen = "chosen_"+$.trim($(cells.td_image).text());
-		$("#fileuploaded").html('<div style="display: block;" id="'+idchosen+'" ") class="chosen-container"><span class="chosen"><a href="'+$.trim($(cells.td_fileurl).text())+'" target="_blank">'+$.trim($(cells.td_filename).text())+'</a><img onclick="removechosen('+$.trim($(cells.td_image).text())+')" class="btn-remove-chosen" src="<?php echo BASE_PATH?>/public/img/icons/close_8x8.gif"/></span></div>');
+		$("#fileuploaded").html('<div style="display: block;" id="'+idchosen+'" ") class="chosen-container"><span class="chosen"><a href="'+$.trim($(cells.td_fileurl).text())+'" target="_blank">'+$.trim($(cells.td_filename).text())+'</a><img onclick="removechosen('+$.trim($(cells.td_image).text())+')" class="btn-remove-chosen" src="<?php echo BASE_PATH?>/public/images/admin/icons/close_8x8.gif"/></span></div>');
 		$("#tbl_Slideshow").show();
 		//$("#slideshow_id").attr("readonly", true); 
 	}
@@ -312,7 +312,7 @@
 			$("#div_filedinhkem").hide();
 			idchosen = "chosen_"+img[0]['id'];
 			byId("slideshow_image").value = img[0]['id'];
-			$("#fileuploaded").html('<div style="display: block;" id="'+idchosen+'" ") class="chosen-container"><span class="chosen"><a href="'+img[0]['fileurl']+'" target="_blank">'+img[0]['filename']+'</a><img onclick="removechosen('+img[0]['id']+')" class="btn-remove-chosen" src="<?php echo BASE_PATH?>/public/img/icons/close_8x8.gif"/></span></div>');
+			$("#fileuploaded").html('<div style="display: block;" id="'+idchosen+'" ") class="chosen-container"><span class="chosen"><a href="'+img[0]['fileurl']+'" target="_blank">'+img[0]['filename']+'</a><img onclick="removechosen('+img[0]['id']+')" class="btn-remove-chosen" src="<?php echo BASE_PATH?>/public/images/admin/icons/close_8x8.gif"/></span></div>');
 			$("#tbl_Slideshow").show();
 		}
 	}
@@ -340,7 +340,7 @@
 				idchosen = "chosen_"+jsonObj.id;
 				byId("msg").innerHTML="";
 				byId("slideshow_image").value = jsonObj.id;
-				$("#fileuploaded").html('<div style="display: block;" id="'+idchosen+'" ") class="chosen-container"><span class="chosen"><a href="'+jsonObj.url+'" target="_blank">'+byId("fileupload").value+'</a><img onclick="removechosen('+jsonObj.id+')" class="btn-remove-chosen" src="<?php echo BASE_PATH?>/public/img/icons/close_8x8.gif"/></span></div>');
+				$("#fileuploaded").html('<div style="display: block;" id="'+idchosen+'" ") class="chosen-container"><span class="chosen"><a href="'+jsonObj.url+'" target="_blank">'+byId("fileupload").value+'</a><img onclick="removechosen('+jsonObj.id+')" class="btn-remove-chosen" src="<?php echo BASE_PATH?>/public/images/admin/icons/close_8x8.gif"/></span></div>');
 				$("#tbl_Slideshow").show(); 
 			},
 			error : function(data) {

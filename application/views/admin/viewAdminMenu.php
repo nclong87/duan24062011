@@ -81,7 +81,7 @@
 	<div style="color: blue; font-size: 20px; text-align: center; font-weight: bold;">Quản Trị Menu</div>
 	<div class="clearfix" id="shortcuts">
 		<ul>
-			<li class="first_li" onclick="showDialogMenu()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/img/icons/add-icon.png"><span>Thêm</span></a></li>
+			<li class="first_li" onclick="showDialogMenu()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/images/icons/add-icon.png"><span>Thêm</span></a></li>
 		</ul>
 	</div>
 	<fieldset>

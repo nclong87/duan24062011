@@ -1,285 +1,126 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title><?php echo isset($title)?$title:'Tìm Việc Làm Thêm - Việc Bán Thời Gian - Sàn Việc Làm - Làm Part Time' ?></title>
-<link rel="shortcut icon" href="<?php echo BASE_PATH ?>/public/css/front/images/favico.ico" type="image/x-icon"/>
-<meta name="google-site-verification" content="nwi63Vcpe4pc79r9h9D_VYVj3CmiNqto9eIt4jUshB0" />
-<meta content="Vietnamese, Vietnam" name="language">
-<meta name="robots" content="index, follow"/>
-<meta content="<?php echo isset($description)?$description:'Jobbid.vn là sàn việc làm để bạn có thể gửi dự án đấu giá công khai, qua đó tìm được ứng viên thích hợp để thực hiện dự án của bạn.Các bạn có thể tìm kiếm được những công việc bán thời gian (part time) hoặc các dự án nhỏ phù hợp với khả năng của bạn.'?>" name="description"/>
-<meta content="jobbid.vn,tim viec part time, tìm việc part time,sàn việc làm,viec ban thoi gian,viec lam tu do,san viec lam,viec ban thoi gian,du an, cong viec,tim viec ban thoi gian,viec lam tai nha,dau thau,dau thau du an, dau thau cong viec, thau du an, thau cong viec,tim viec lam them, lam them, viec part time,cong viec ban thoi gian,tim nha thau,tim viec,viec lam online, viec lam ban thoi gian, đấu giá dự án, đấu giá công việc, thầu dự án, thầu công việc, tìm việc làm thêm,làm thêm,việc part time,công việc tại nhà,công việc bán thời gian,dự án,công việc, đấu giá,tìm việc,việc làm onlien,việc làm bán thời gian,việc làm tại nhà, làm thêm online, làm thêm cho sinh viên, làm thêm trên mạng,việc bán thời gian,việc làm tự do" name="keywords"/>
-<meta content="jobbid.vn" name="author"/>
-<meta content="jobbid.vn" name="copyright"/>
-<link href="<?php echo BASE_PATH ?>/public/css/front/jquery-ui.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo BASE_PATH ?>/public/css/front/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="<?php echo BASE_PATH ?>/public/css/front/menu_style.css" type="text/css" media="screen" />
-<script type="text/javascript" src="<?php echo BASE_PATH ?>/public/js/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="<?php echo BASE_PATH ?>/public/js/jquery-ui.js"></script>
-<script type="text/javascript" src="<?php echo BASE_PATH ?>/public/js/jquery_blockUI.js"></script>	
-<script type="text/javascript" src="<?php echo BASE_PATH ?>/public/js/constances.js"></script>	
-<style type="text/css">
-.textboxstyle{
-	background-image:url('<?php echo BASE_PATH?>/public/images/icons/search_icon.gif');
-	background-position: center center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    float: left;
-    height: 22px;
-    position: relative;
-    width: 22px;
-}
-</style>
-<!--[if !IE]> 
-<-->
-<style type="text/css">
-	fieldset {
-		border:1px solid #C2C2C2;
-		-moz-border-radius:5px 5px 5px 5px;
-	}
-</style>
-<!--> 
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="<?php echo BASE_PATH ?>/public/css/reset.css" type="text/css" media="screen">
+<link rel="stylesheet" href="<?php echo BASE_PATH ?>/public/css/style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="<?php echo BASE_PATH ?>/public/css/layout.css" type="text/css" media="screen">
+<script type="text/javascript" src="<?php echo BASE_PATH ?>/public/js/jquery-1.6.min.js"></script>
+<script src="<?php echo BASE_PATH ?>/public/js/cufon-yui.js" type="text/javascript"></script>
+<script src="<?php echo BASE_PATH ?>/public/js/cufon-replace.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php echo BASE_PATH ?>/public/js/tms-0.3.js"></script>
+<script type="text/javascript" src="<?php echo BASE_PATH ?>/public/js/tms_presets.js"></script> 
+<script type="text/javascript" src="<?php echo BASE_PATH ?>/public/js/jquery.easing.1.3.js"></script> 
+<script src="<?php echo BASE_PATH ?>/public/js/FF-cash.js" type="text/javascript"></script>
+<!--[if lt IE 7]>
+	<div style=' clear: both; text-align:center; position: relative;'>
+		<a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/images/upgrade.jpg" border="0"  alt="" /></a>
+	</div>
+<![endif]-->
+<!--[if lt IE 9]>
+	<script type="text/javascript" src="<?php echo BASE_PATH ?>/public/js/html5.js"></script>
+	<style>
+	#search-form {behavior:url("<?php echo BASE_PATH ?>/public/js/PIE.htc");position:relative}
+	.search-form {behavior:url("<?php echo BASE_PATH ?>/public/js/PIE.htc");position:relative}
+	#search-form a {behavior:url("<?php echo BASE_PATH ?>/public/js/PIE.htc");position:relative}
+	.menu li a {behavior:url("<?php echo BASE_PATH ?>/public/js/PIE.htc");position:relative}
+	.numb {behavior:url("<?php echo BASE_PATH ?>/public/js/PIE.htc");position:relative}
+	.box {behavior:url("<?php echo BASE_PATH ?>/public/js/PIE.htc");position:relative}
+	.button-2 {behavior:url("<?php echo BASE_PATH ?>/public/js/PIE.htc")}
+	#page2 .button-2 {behavior:url("<?php echo BASE_PATH ?>/public/js/PIE.htc");position:relative}
+	#content {behavior:url("<?php echo BASE_PATH ?>/public/js/PIE.htc");position:relative}
+	.block-news {behavior:url("<?php echo BASE_PATH ?>/public/js/PIE.htc");position:relative}
+	.slider-wrapper {behavior:url("<?php echo BASE_PATH ?>/public/js/PIE.htc")}
+	</style>
 <![endif]-->
 </head>
 <body>
-<CENTER>
-<div id="dhtmltooltip"></div>
-<img alt="tooltiparrow" id="dhtmlpointer" src="<?php echo BASE_PATH ?>/public/images/icons/tooltiparrow.png" />
-<img alt="tooltiparrow" id="dhtmlpointer2" src="<?php echo BASE_PATH ?>/public/images/icons/tooltiparrow2.png" />
-<script type="text/javascript" src="<?php echo BASE_PATH ?>/public/js/tooltip.js"></script>
-<div id="wrapcontent">
-	<div style="position:relative;float:left;width:100%">
-		<div style="width:100%;height:150px">
-			<?php 
-			if(isset($banner)) {
-				echo $banner['widget']['content'];
-			}
-			?>
-		</div>
-		<div id="top">
-			<?php 
-			if(isset($menu)) {
-				echo '<div class="widget">';
-				include (ROOT . DS . 'public' . DS . $menu['widget']['content']);
-				echo '</div>';
-			}
-			?>
-		</div>
-		<div style="font-weight: bold;width: 100%; text-align: center; float: left; font-size: 20px; height: 30px;" id="showvip">
-		</div>
-		<div id="leftcol" >
-			<div class='ui-tabs ui-widget ui-widget-content ui-corner-all' style="padding:0">
+<!-- header -->
+	<div class="bg">
+		<div class="main">
+			<header>
+				<div class="row-1">
+					<h1>
+						<a class="logo" href="index.html">Point.co</a>
+						<strong class="slog">The most creative ideas</strong>
+					</h1>
+					<form id="search-form" action="" method="post" enctype="multipart/form-data">
+						<fieldset>
+							<div class="search-form">					
+								<input type="text" name="search" value="Type Keyword Here" onBlur="if(this.value=='') this.value='Type Keyword Here'" onFocus="if(this.value =='Type Keyword Here' ) this.value=''" />
+								<a href="#" onClick="document.getElementById('search-form').submit()">Search</a>									
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="row-2">
+					<nav>
+						<?php 
+						include (ROOT . DS . 'public' . DS . 'components'.DS.'menu_component'.DS.'menu.php');
+						?>
+					</nav>
+				</div>
+			</header>
 			<?php
 			include (ROOT . DS . 'application' . DS . 'views' . DS . $this->_controller . DS . $this->_action . '.php');
 			?>
-			</div>
-		</div>
-		<div id="rightcol">
-			<?php
-			foreach($rightcol as $widget) {
-				echo '<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" style="text-align:left;padding:0">';
-				if($widget['widget']['showtitle']==1)
-					echo '<div class="ui-widget-header ui-helper-clearfix ui-corner-top" style="border:none;padding-left:5px">'.$widget['widget']['name'].'</div>';				
-				if($widget['widget']['iscomponent']==1) {
-					include (ROOT . DS . 'public' . DS . $widget['widget']['content']);
-				} else {
-					echo $widget['widget']['content'];
-				}		
-				echo '</div>';
-			}
-			?>	
-		</div>	
-		<div id="bottom">
-		<?php
-			foreach($footer as $widget) {
-				echo '<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" style="width: 100%;margin:0;padding:0; height: auto; position: relative; float: left;margin-bottom:5px">';
-				if($widget['widget']['showtitle']==1)
-					echo '<div class="ui-widget-header ui-helper-clearfix ui-corner-top" style="border:none;padding-left:5px">'.$widget['widget']['name'].'</div>';				
-				if($widget['widget']['iscomponent']==1) {
-					include (ROOT . DS . 'public' . DS . $widget['widget']['content']);
-				} else {
-					echo $widget['widget']['content'];
-				}		
-				echo '</div>';
-			}
-		?>	
+			<footer>
+				<div class="row-top">
+					<div class="row-padding">
+						<div class="wrapper">
+							<div class="col-1">
+								<h4>Address:</h4>
+								<dl class="address">
+									<dt><span>Country:</span>USA</dt>
+									<dd><span>City:</span>San Diego</dd>
+									<dd><span>Address:</span>Beach st. 54</dd>
+									<dd><span>Email:</span><a href="#">lcenter@mail.com</a></dd>
+								</dl>
+							</div>
+							<div class="col-2">
+								<h4>Follow Us:</h4>
+								<ul class="list-services">
+									<li class="item-1"><a href="#">Facebook</a></li>
+									<li class="item-2"><a href="#">Twitter</a></li>
+									<li class="item-3"><a href="#">LinkedIn</a></li>
+								</ul>
+							</div>
+							<div class="col-3">
+								<h4>Why Us:</h4>
+								<ul class="list-1">
+									<li><a href="#">Lorem ipsum dolor</a></li>
+									<li><a href="#">Aonsect adipisic</a></li>
+									<li><a href="#">Eiusmjkod tempor</a></li> 
+									<li><a href="#">Incididunt ut labore</a></li>
+								</ul>
+							</div>
+							<div class="col-4">
+								<div class="indent3">
+									<strong class="footer-logo">Point.<strong>co</strong></strong>
+									<strong class="phone"><strong>Toll Free:</strong> 1-800-567-8934</strong>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row-bot">
+					<div class="aligncenter">
+						<p class="p0"><a href="http://www.templatemonster.com/" target="_blank">Website Template</a> by TemplateMonster.com</p>
+						<a href="http://www.templates.com/product/3d-models/" target="_blank">3D Models</a> provided by Templates.com<br>
+						<!-- {%FOOTER_LINK} -->
+					</div>
+				</div>
+			</footer>
 		</div>
 	</div>
-</div>
-<div id="dialogIntro" title="Chào Mừng Bạn Đến Với Jobbid.Vn" style="text-align:left">
-	<table width="100%" border="thin">
-		<thead>
-		<tr class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" style="font-weight:bold;height:20px;text-align:center;">
-			<td style="width:50%">BẠN LÀ FREELANCER</td>
-			<td>BẠN LÀ CHỦ DỰ ÁN</td>
-		</tr>
-		</thead>
-		<tbody>
-		<tr>
-		<td valign="top">
-		<br/>&nbsp;&nbsp; - Tìm được công việc làm thêm phù hợp với khả năng của mình.<br/>&nbsp;&nbsp; - Tận dụng được tối đa thời gian nhàn rỗi của bạn<br/>&nbsp;&nbsp; - <span style="color:rgb(255, 0, 0)">Nhận được email thông báo nếu có dự án, công việc mới</span><br/>&nbsp;&nbsp; - Luôn cập nhật những dự án, công việc mới.<br/>&nbsp;&nbsp; <span style="color:rgb(255, 0, 0)"><b>- Hoàn toàn miễn phí.</b></span><br/><br/>(bạn chỉ cần đăng ký 1 tài khoản và tạo 1 hồ sơ năng lực, chúng tôi sẽ dựa vào hồ sơ đó để gửi các dự án mới đến cho bạn)
-		</td>
-		<td valign="top">
-		<br/>&nbsp;&nbsp; - Đăng dự án, công việc của bạn <span style="color:rgb(255, 0, 0)">(miễn phí)</span><br/>
-		&nbsp;&nbsp; - Tìm được những cá nhân (hoặc công ty) ưu tú nhất để thực hiện dự án của bạn với chi phí và thời gian hợp lý nhất.<br/>
-		&nbsp;&nbsp; - Gửi email cho bạn ngay khi có người muốn thầu dự án của bạn.<br/>
-		&nbsp;&nbsp; <span style="color:rgb(255, 0, 0)"><b>- Hoàn toàn miễn phí.</b></span>
-		</td>
-		</tr>
-		</tbody>
-	</table>
-</div>
-</CENTER>
+	<script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-21846705-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-<script type="text/javascript">
+<script>
 	var url_base = '<?php echo BASE_PATH ?>';
-	if (!Array.indexOf) {
-	  Array.prototype.indexOf = function (obj, start) {
-		for (var i = (start || 0); i < this.length; i++) {
-		  if (this[i] == obj) {
-			return i;
-		  }
-		}
-		return -1;
-	  }
-	}
 	function url(url) {
 		return url_base+url;
 	}
-	function byId(id) {
-		return document.getElementById(id);
-	}
-	function block(id) {
-		$(id).block({ 
-			message: '<span style="color:white">Đang xử lý...</span>', 
-			css: { 
-				border: 'none', 
-				padding: '15px', 
-				backgroundColor: '#000', 
-				'-webkit-border-radius': '10px', 
-				'-moz-border-radius': '10px', 
-				opacity: .5, 
-				color: '#fff'
-			} 
-		}); 
-	}
-	function unblock(id) {
-		$(id).unblock(); 
-	}
-	function boundTip(id,content,width,action) {
-		if(width==null)
-			width = 250;
-		if(action==null) {
-			$("#"+id).focus(function () {
-				xTip = $(this).offset().left+$(this).width();
-				yTip = $(this).offset().top;
-				showtip(content,width);
-			});
-			$("#"+id).blur(function () {
-				hidetip();
-			});
-		}
-		if(action=="hover") {
-			$("#"+id).hover(
-				function () {
-					xTip = $(this).offset().left+$(this).width();
-					yTip = $(this).offset().top;
-					showtip(content,width);
-				}, 
-				function () {
-					hidetip();
-				}
-			);
-		}
-	}
-	var quotations = new Array();
-	var lenQuotations = 0;
-	var iShow = 0;
-	var timerVip;
-	function display() {
-		if(lenQuotations>0) {
-			document.getElementById('showvip').innerHTML=quotations[iShow];
-			$("#showvip").show('clip',1000);
-			if(iShow==lenQuotations-1)
-				iShow = 0;
-			else
-				iShow++;
-			timerVip = setTimeout("display()",4000);
-		}
-		//a=Math.floor(Math.random()*quotations.length);
-		
-	}
-	//Config
-	var width_content;
-	var editor_width = 499;
-	var redirect_time = 2000; // 2giay
-	<?php
-	if(isset($_SESSION['popup_intro'])) {
-		echo 'var autoOpen = false;';
-	} else {
-		echo 'var autoOpen = true;';
-		$_SESSION['popup_intro'] = true;
-	}
-	
-	?>
-	$(document).ready(function(){
-		$("#dialogIntro").dialog({
-			autoOpen: autoOpen,
-			minWidth: 800,
-			modal: true,
-			resizable :false,
-			buttons: {
-				Đóng: function() {
-					$(this).dialog('close');
-				}
-			}
-		});	
-		$("#showvip").hover(
-			function(){
-				clearTimeout(timerVip);
-			},
-			function() {
-				timerVip = setTimeout("display()",4000);
-			}
-		);
-		$.ajax({
-			type: "GET",
-			cache: false,
-			url: url("/raovat/getvips"),
-			success: function(data){
-				var vips = $.parseJSON(data);
-				i=0;
-				while(i<vips.length) {
-					vip = vips[i];
-					if(vip!=null) {
-						htmlvip = '<a style="color:red" href="'+url('/raovat/view/'+vip.id+'/'+vip.alias)+'" title="'+vip.tieude+'">'+vip.tieude+'</a>';
-						quotations[lenQuotations]= htmlvip;
-						lenQuotations++;
-					}
-					i++;
-				}
-				display();
-			},
-			error: function(data){ alert (data);}	
-		});
-		//wleftcol = ($("#leftcol").height()==0)?0:$("#leftcol").width();
-		//wrightcol = 250;
-		//alert(wrightcol);
-		//alert($("#wrapcontent").width());
-	});
+	//alert(url("js/PIE.htc"));
 </script>
