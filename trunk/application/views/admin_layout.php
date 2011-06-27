@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>.: TRANG QUẢN TRỊ :.</title>
-    <link rel="stylesheet" type="text/css" media="all" href="<?php echo BASE_PATH ?>/public/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo BASE_PATH ?>/public/css/admin_style.css" />
 	<link rel="Stylesheet" type="text/css" href="<?php echo BASE_PATH ?>/public/css/blue/jquery-ui.css"  />	
 	<!--[if IE 7]><link rel="stylesheet" href="<?php echo BASE_PATH ?>/public/css/ie.css" type="text/css" media="screen, projection" /><![endif]-->
 	<!--[if IE 6]><link rel="stylesheet" href="<?php echo BASE_PATH ?>/public/css/ie6.css" type="text/css" media="screen, projection" /><![endif]-->
@@ -65,7 +65,7 @@
 <div class="container" id="container">
     <div  id="header">
     	<div id="profile_info">
-			<img src="<?php echo BASE_PATH ?>/img/avatar.jpg" id="avatar" alt="avatar" />
+			<img src="<?php echo BASE_PATH ?>/images/admin/avatar.jpg" id="avatar" alt="avatar" />
 			<p>Welcome <strong><?php echo $_SESSION['account']['username'] ?></strong>. <a href="<?php echo BASE_PATH.'/account/doLogout' ?>">Log out?</a></p>
 			<p class="last_login">Last login: <?php echo $html->format_date($_SESSION['account']['lastlogin'],'d/m/Y H:i:s') ?></p>
 		</div>

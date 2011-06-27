@@ -83,13 +83,13 @@
 	<div style="color: blue; font-size: 20px; text-align: center; font-weight: bold;">Quản Trị Người Dùng</div>
 	<div class="clearfix" id="shortcuts">
 		<ul>
-			<li class="first_li" onclick="showDialogAccount()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/img/icons/add-icon.png"><span>Thêm</span></a></li>
+			<li class="first_li" onclick="showDialogAccount()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/images/icons/add-icon.png"><span>Thêm</span></a></li>
 		</ul>
 		<ul>
-			<li class="first_li" onclick="doDeleteAccounts()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/img/icons/delete-icon.png"><span>Xóa</span></a></li>
+			<li class="first_li" onclick="doDeleteAccounts()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/images/icons/delete-icon.png"><span>Xóa</span></a></li>
 		</ul>
 		<ul>
-			<li class="first_li" onclick="doShowDialogEdit()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/img/icons/edit-icon.png"><span>Sửa</span></a></li>
+			<li class="first_li" onclick="doShowDialogEdit()"><a href="#"><img alt="Thêm" src="<?php echo BASE_PATH ?>/public/images/icons/edit-icon.png"><span>Sửa</span></a></li>
 		</ul>
 	</div>
 	<fieldset>

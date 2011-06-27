@@ -37,13 +37,13 @@
 	<div id="shortcuts" class="clearfix">
 		<h2 class="ico_mug">Panel shortcuts</h2>
 		<ul>
-			<li class="first_li"><a href=""><img src="img/theme.jpg" alt="themes" /><span>Themes</span></a></li>
-			<li><a href=""><img src="img/statistic.jpg" alt="statistics" /><span>Statistics</span></a></li>
-			<li><a href=""><img src="img/ftp.jpg" alt="FTP" /><span>FTP</span></a></li>
-			<li><a href=""><img src="img/users.jpg" alt="Users" /><span>Users</span></a></li>
-			<li><a href=""><img src="img/comments.jpg" alt="Comments" /><span>Comments</span></a></li>
-			<li><a href=""><img src="img/gallery.jpg" alt="Gallery" /><span>Gallery</span></a></li>
-			<li><a href=""><img src="img/security.jpg" alt="Security" /><span>Security</span></a></li>
+			<li class="first_li"><a href=""><img src="images/theme.jpg" alt="themes" /><span>Themes</span></a></li>
+			<li><a href=""><img src="images/statistic.jpg" alt="statistics" /><span>Statistics</span></a></li>
+			<li><a href=""><img src="images/ftp.jpg" alt="FTP" /><span>FTP</span></a></li>
+			<li><a href=""><img src="images/users.jpg" alt="Users" /><span>Users</span></a></li>
+			<li><a href=""><img src="images/comments.jpg" alt="Comments" /><span>Comments</span></a></li>
+			<li><a href=""><img src="images/gallery.jpg" alt="Gallery" /><span>Gallery</span></a></li>
+			<li><a href=""><img src="images/security.jpg" alt="Security" /><span>Security</span></a></li>
 			
 		</ul>
 	</div><!-- end #shortcuts -->

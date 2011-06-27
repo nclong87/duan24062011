@@ -3,14 +3,14 @@
 	<div style="text-align:left;padding:10px;width:90%;float:left;">
 		<div id="top_icon" style="padding-top:0;">
 		  <div align="center">
-			<div><a href="#"><img src="<?php echo BASE_PATH ?>/public/img/icons/add_icon.png" alt="big_settings" width="25" height="26" border="0" /></a></div>
+			<div><a href="#"><img src="<?php echo BASE_PATH ?>/public/images/icons/add_icon.png" alt="big_settings" width="25" height="26" border="0" /></a></div>
 					<span class="toplinks">
 			  <a href="#" onclick="showDialogWidget()"><span class="toplinks">THÊM WIDGET</span></a></span><br />
 		  </div>
 		</div>
 		<div id="top_icon" style="padding-top:0;">
 		  <div align="center">
-			<div><a href="#"><img src="<?php echo BASE_PATH ?>/public/img/icons/layout_icon.png" alt="big_settings" width="25" height="26" border="0" /></a></div>
+			<div><a href="#"><img src="<?php echo BASE_PATH ?>/public/images/icons/layout_icon.png" alt="big_settings" width="25" height="26" border="0" /></a></div>
 					<span class="toplinks">
 			  <a href="#" onclick="viewLayout()"><span class="toplinks">XEM LAYOUT</span></a></span><br />
 		  </div>
